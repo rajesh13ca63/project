@@ -1,0 +1,200 @@
+<?php
+require 'header.php';
+?>
+<?php
+//echo "databse insertion in ";
+if($_POST["submit"]=="save")
+{
+	$username=$_POST["username"];
+	$password=$_POST["password"];
+	$repassword=$_POST["repassword"];
+	$firstname=$_POST["firstname"];
+	$midname=$_POST["midname"];
+	$lastname=$_POST["lastname"];
+	$sex=$_POST["sex"];
+	$marital=$_POST["marital"];
+	$dob=$_POST["dob"];
+	$street=$_POST["street"];
+	$city=$_POST["city"];
+	$state=$_POST["state"];
+	$zip=$_POST["zip"];
+	$phone=$_POST["phone"];
+	$email=$_POST["email"];
+
+	$offstreet=$_POST["offstreet"];
+	$offcity=$_POST["offcity"];
+	$offstate=$_POST["offstate"];
+	$offzip=$_POST["offzip"];
+	$offphone=$_POST["offphone"];
+	$offemail=$_POST["offemail"];
+
+	$company=$_POST["company"];
+	$website=$_POST["website"];
+	
+       //condition checking here
+	
+	if(!isset($password) && strlen($password)<5)
+	{
+   		echo "password should not be empty";
+   	}
+	mysql_connect("localhost","rajesh","Mindfire","demo");
+	//mysql_select_db("demo");																																																			
+	$s="INSERT into registration(username,password,repassword,firstname,midname,lastname,sex,marital,dob,street,city,state,zip,phone,email,offstreet,offcity,offstate,offzip,offphone,offemail,website) 
+	values('$username','$password','$repassword','$firstname','$midname','$lastname','$sex','$marital','$dob','$street','$city','$state','$zip','$phone','$email','$offstreet','$offcity','$offstate','$offzip','$offphone','$offemail','$website')";
+	
+	if(mysql_query($s))
+	{
+		
+		header("location:home.php");
+	}
+	else
+	{
+		echo mysql_error();
+	}
+
+ //checkig the textfield data 
+ if(!isset($username))
+	{
+   		echo "empty";
+   	}
+
+}
+
+?>
+
+
+<div class="container">
+    <form name="f" method="post" action="project.php"	>
+    <h1 class="well" align="center">Registration Form</h1>
+    <div class="col-lg-12 well">
+	<div class="row">
+				
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>1.User Name</label>
+								<input type="text" name="username" value="" placeholder="User Name" class="form-control">
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>2.Password</label>
+								<input type="password" name="password" value="" placeholder="Password" class="form-control"></p></br>
+							</div>                         
+                                            
+                            <div class="col-sm-4 form-group">
+                            	<label>3.Retype Password</label>
+								<input type="password" name="repassword" value="" placeholder="Re-type Password" class="form-control">
+							</div>
+						</div>
+					</div>
+
+                    <div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>4.First Name</label>
+								<input type="text" name="firstname" value="" placeholder="First Name" class="form-control">
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>5.Middle Name</label>
+								<input type="text" name="midname" value="" placeholder="Middle Name" class="form-control"></p></br>
+							</div>                         
+                                            
+                            <div class="col-sm-4 form-group">
+                            	<label>6.Last Name</label>
+								<input type="text" name="lastname" value="" placeholder="Last Name" class="form-control">
+							</div>
+					    </div>
+					</div>
+
+<div class="col-sm-12">
+    <div class="row">
+       <div class="col-sm-4 form-group">
+        <label>7.Gender</label>                           
+        <div class="radio">
+        <label><input type="radio" name="sex" value="male">Male</label>
+        </div>
+        <div class="radio">
+        <label><input type="radio" name="sex" value="female">Female</label>
+        </div>
+      </div>
+      <div class="col-sm-4 form-group">
+         <label>8.Marital Status</label>                           
+         <div class="radio">
+         <label><input type="radio" name="marital" value="maried">Maried</label>
+         </div>
+         <div class="radio">
+         <label><input type="radio" name="marital" value="unmaried">Unmaried</label>
+         </div>
+      </div>
+      <div class="col-sm-4 form-group">
+         <label>9.Date of Birth</label>
+         <input type="date" name="dob" value="">
+      </div>
+   </div>
+</div>                                
+					<div class="col-sm-12">		
+						<div class="row">
+						   <div class="col-sm-6 form-group">
+							    <h3><label>Residence Address</label></h4><br>
+							    <label>Street</label>
+			                    <input type="text" name="street" value="" placeholder="Enter Street Address" class="form-control">
+						   		
+								<label>City</label>
+								<input type="text" name="city" value="" placeholder="Enter City Name Here.." class="form-control">
+														
+								<label>State</label>
+								<input type="text" name="state" value="" placeholder="Enter State Name Here.." class="form-control">
+								
+								<label>Zip Code</label>
+								<input type="text" name="zip" value="" placeholder="Enter Zip Code Here.." class="form-control">
+                                
+                                <label>Phone Number</label>
+						        <input type="text" name="phone" value="" placeholder="Enter Phone Number Here.." class="form-control">
+						
+						        <label>Email Address</label>
+						        <input type="text" name="email" value="" placeholder="Enter Email Address Here.." class="form-control">
+						    </div>		
+						
+						        <div class="col-sm-6 form-group">
+							    <h3><label>Office Address</label></h3><br>
+							    <label>Street</label>
+			                    <input type="text" name="offstreet" value="" placeholder="Enter Street Address" class="form-control">
+						   		
+								<label>City</label>
+								<input type="text" name="offcity" value="" placeholder="Enter City Name Here.." class="form-control">
+														
+								<label>State</label>
+								<input type="text" name="offstate" value="" placeholder="Enter State Name Here.." class="form-control">
+								
+								<label>Zip Code</label>
+								<input type="text" name="offzip" value="" placeholder="Enter Zip Code Here.." class="form-control">
+
+								<label>Phone Number</label>
+						        <input type="text" name="offphone" value="" placeholder="Enter Phone Number Here.." class="form-control">
+						
+						        <label>Email Address</label>
+						        <input type="text" name="offemail" value="" placeholder="Enter Email Address Here.." class="form-control">
+							</div>		
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Company</label>
+								<input type="text" name="company" value="" placeholder="Enter Company Name Here.." class="form-control">
+							</div>
+				     		<div class="col-sm-6 form-group">							
+								<label>Website</label>
+						        <input type="text" name="website" value="" placeholder="Enter Website Name Here.." class="form-control">
+					        </div>
+					    </div>
+   <input type="submit" name="submit" value="save">
+				 		
+	</div>
+    </div>
+    </form>
+	</div>
+	<?php
+require 'footer.php';
+?>
+
+
+
