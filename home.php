@@ -6,27 +6,28 @@ require 'dbinfo.php';
     <form name="f" method="post" action="home.php">
     <h1 class="well" align="center">Home Profile Page</h1>
     <div class="col-lg-12 well">
-	<div class="row">         
-	<div class="col-sm-3">        		
-    <button type="submit" name="submit" class="btn btn-default" value="ShowProfile">ShowProfile</button>
-	</div>		
-	<div class="col-sm-3">        	
-    <button type="submit" name="submit" class="btn btn-default" value="Edit Profile">Edit Profile</button>
-	</div>	
-	<div class="col-sm-3">
-	<button type="submit" name="submit" class="btn btn-default" value="changepassword">Change Password</button>
-	</div>		
-	<div class="col-sm-3">        	
-    <button type="submit" name="submit" class="btn btn-default" value="Logout">Logout</button>
-	</div>	 		
+	    <div class="row">         
+	        <div class="col-sm-3">        		
+              <button type="submit" name="submit" class="btn btn-primary" value="ShowProfile">ShowProfile</button>
+	        </div>		
+	        <div class="col-sm-3">        	
+               <button type="submit" name="submit" class="btn btn-primary" value="Edit Profile">Edit Profile</button>
+	        </div>	
+	        <div class="col-sm-3">
+	           <button type="submit" name="submit" class="btn btn-primary" value="changepassword">Change Password</button>
+	        </div>		
+	        <div class="col-sm-3">        	
+               <button type="submit" name="submit" class="btn btn-primary" value="Logout">Logout</button>
+	        </div>	 		
+	    </div>
 	</div>
     </form>
-	</div>
+</div>
 <?php
-//deletion records from the database
 session_start();
 if(!isset($_SESSION['username']))
    header("location:login1.php");
+//redirect to the one page to another page
 if(isset($_SESSION['username']))
 {
 if($_POST["submit"]=="changepassword")
@@ -46,13 +47,14 @@ if($_POST["submit"]=="Logout")
 //showing the all record from database
 if($_POST["submit"]=="ShowProfile")
  {
-	$username=$_SESSION['username'];
- 	$s="SELECT * from registration where username='$username'";
-	$resource=mysql_query($s);
-	$count=mysql_num_rows($resource);
-	$row=mysql_fetch_row($resource);
- 
-   //showing the personal result
+    header ("location:detail.php");
+
+	/*$username=$_SESSION['username'];
+ 	$query="SELECT * from registration where username='$username'";
+	$resource=mysqli_query($query);
+	$row=mysqli_fetch_assoc($resource);
+   //$count=mysqli_num_rows($resource);
+   //showing the personal information
    echo "<h3>";
     echo "<b>username:</b>".$row[0]."<br/>";
     echo "<b>Name:</b>".$row[3]."<br/>";
@@ -74,10 +76,10 @@ if($_POST["submit"]=="ShowProfile")
 	echo "OffEmail:".$row[20]."<br/>";
 	echo "Company:".$row[21]."<br/>";
 	echo "Website:".$row[22]."<br/>";
-    echo "</h3>"  ;
+    echo "</h3>"  ;*/
    }
 }
 ?>
 <?php
-require 'footer.php';
+//require 'footer.php';
 ?>

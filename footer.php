@@ -1,5 +1,3 @@
-<html>
-<body>
  <footer>
         <div class="container">
             <div class="row">
@@ -16,14 +14,15 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-   
-    </script>
+    <script src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js?t=" + Math.random()></script>
+    <script src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.min.js?t=" + Math.random()></script>
+    <script src="js/login.js" type="text/JavaScript"></script>
+    <script src="js/registration_validation.js" type="text/JavaScript"></script>
+    <script src="js/edit.js"  type="text/javascript"></script>
 
+    
+
+        
 </body>
 
 </html>

@@ -9,25 +9,22 @@ if(!isset($_SESSION['username']))
 //connection establishment here
 if(isset($_SESSION['username']))
 {
-$username=$_SESSION['username'];
+$username = $_SESSION['username'];
 if($_POST['submit'])
 {
   $oldpassword=$_POST["oldpassword"];
   $newpassword=$_POST["newpassword"];
-  $sql="SELECT password from registration where username='$username' "; 
-  $query=mysqli_query($conn,$sql);
-  $row=mysqli_fetch_assoc($query);
+  $sql = "SELECT password from registration where username='$username' "; 
+  $query = mysqli_query($conn,$sql);
+  $row = mysqli_fetch_assoc($query);
   $oldpassworddb=$row['password'];
-  if($oldpassword==$oldpassworddb)
-		{
-    if (strlen($newpassword)>25||strlen($newpassword)<6) 
-		{
+  if ($oldpassword == $oldpassworddb) {
+    if (strlen($newpassword)>25||strlen($newpassword)<6) {
 		 echo "Password must be betwwen 6 & 25";
-		}
-		else
-		{
-		$query = "UPDATE registration SET password='$newpassword',
-		 repassword='$newpassword' WHERE username='$username'";
+		}else {
+		$query = "UPDATE registration 
+					SET password = '$newpassword', repassword='$newpassword' 
+					WHERE username ='$username'";
 		$res=mysqli_query($conn,$query);
 		if($res)
 		{
