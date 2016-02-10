@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 			$.ajax({
                 method: "POST",
-                url: "var/www/phpproject/assignment/validate_login.php",
+                url: "validate_login.php",
                 dataType: 'json',
                // cache: false,
                 data: {

@@ -4,7 +4,7 @@
     //require 'validate_login.php';
     	
        if($_POST["submit"] == "SignUp") {
-    	  header("location:registration/registration.php");
+    	  header("location:registration.php");
         }
 ?>
 <!--HTML Code for Loginpage-->

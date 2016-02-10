@@ -308,9 +308,7 @@ $(document).ready(function() {
                                  
                 },
                  error: function(response) {
-                // 	//if(response.invalid == "Invalid")
-                // 	//console.log(response);
-                     //alert('error');
+                
                  }
             });
 

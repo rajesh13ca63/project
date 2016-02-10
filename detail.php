@@ -41,9 +41,9 @@ if($_SESSION['username'])
 
 ?>
 <div class="container">
-  <h2 class="well" align="center">Personal Information</h2>
-   <div class="col-lg-12 well">
-				<div class="row">
+  <h2 class="well"  align="center"> Personal Information &nbsp &nbsp &nbsp<a href="home.php">Home</a></h2>
+      <div class="col-lg-12 well">
+              	<div class="row">
 					<div class="col-sm-3 form-group">
 						<label>First Name:</label>
 						<label><?php echo $firstname; ?></label><br/>

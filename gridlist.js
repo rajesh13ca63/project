@@ -4,14 +4,13 @@ $(document).ready(function () {
             editurl:"addsearchdelete.php",
             datatype: "json",
             mtype: "POST",
-            colNames: ["User Name", "First Name", "Last Name",
+            colNames: [ "First Name", "Last Name",
                         "Gender", "Date of Birth", "Marital-Status",
                         "Street", "City", "State",
                         "Phone no", "Eamil Id"
                         ],
 
             colModel: [
-                { name: "username",align:"left",width:100},
                 { name: "firstname",width:100,editable:true},
                 { name: "lastname",width:100,editable:true},
                 { name: "sex",width:50,editable:true},
@@ -36,6 +35,7 @@ $(document).ready(function () {
             editable: true,
             viewrecords: true,
             gridview: true,
+            stringResult:true,
             caption: "Personal Information",
             gridComplete: function(){
                 var ids = jQuery("#list_records").jqGrid('getDataIDs');
@@ -58,7 +58,8 @@ $(document).ready(function () {
                           refresh: true, view: true, 
                           position: "left", cloneToTop: true 
                           } );     
- 
+         
+       // $('#list_records').jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false}); 
  });
 
  

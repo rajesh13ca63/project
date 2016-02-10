@@ -29,7 +29,8 @@ $sord = $_POST['sord'];
 			$i=0;
 			while ($row = mysqli_fetch_assoc($result)) {
 				$responce->rows[$i]['id'] = $row['id'];
-				$responce->rows[$i]['cell'] = array($row['username'], $row['firstname']
+				$responce->rows[$i]['cell'] = array(
+				                             $row['firstname']
 											,$row['lastname']
 											,$row['sex'], $row['dob']
 											,$row['marital']

@@ -32,7 +32,7 @@ require 'dbinfo.php';
 		  $image = $_POST["image"];
 		  //$website = $_POST["website"];
 		
-	//checking the username validation
+	    //checking the username validation
 	      
 		    if (empty($username)) {
              $error['username'] = "UserName is required";
@@ -66,13 +66,13 @@ require 'dbinfo.php';
 			    $error['lastname'] = "Only charatcers are allowed in middle name";
 		    }
    
-       //gender validation
+        //gender validation
 	          if (empty($sex)) {
 	             $error['sex'] = "* Gender is required";
 	          }
 
-	   //validation of marital status and date of birth
-			   if (empty($marital)) {
+	    //validation of marital status and date of birth
+	 		   if (empty($marital)) {
 			      $error['marital'] = "* Marital Status is required";
 			   }
 			       
@@ -80,7 +80,7 @@ require 'dbinfo.php';
 			      $error['dob'] = "* DOB is required";
 			   }
 
-     //residence address street validation
+       //residence address street validation
 		  if (empty($street)) {
 		     $error['street'] = "*Street  can not be empty";
 		   }
@@ -88,41 +88,41 @@ require 'dbinfo.php';
 		  //    $error['street'] = "Only charatcers,dot and space allowed in <b>Street</b>";
 		  // }
  
-    //residence address city validation
+       //residence address city validation
 		  if (empty($city)) {
 		       $error['city'] = "* this field can not be empty";
 		    }  elseif (!preg_match($nameReg, $city)) {
 		       $error['city'] = "Only charatcers,space is not allowed in <b>City</b>";
 		    }
 
-    //residence address state validation
+        //residence address state validation
 		  if (empty($state)) {
 		      $error['state'] = "* this field can not be empty";
 		   }elseif (!preg_match($nameReg, $state)) {
 		      $error['state'] = "Only charatcers,allowed";
 		  }
   
-	 //residence address zipcode validation
+	 	//residence address zipcode validation
 		  if (empty($zip)) {
 		      $error['zip'] = "* this field can not be empty";
 		   }elseif (!preg_match("/^([0-9]{6})*$/", $zip)) { 
 		      $error['zip'] = "Only digits(6) allowed in zipcode";
 		  }
-	 //residence contact no validation   
+	    //residence contact no validation   
 		  if (empty($phone)) {
 		      $error['phone'] = "Phone no cannot be blank";
 		  }elseif (!preg_match("/^([0-9]{10})*$/", $phone)) { 
 		      $error['phone'] = "Only digits(10) allowed in contact number";
 		  }
 
-   //Office address street validation
+   		//Office address street validation
 		  if (empty($offstreet)) {
 		      $error['offstreet'] = "* this field can not be empty";
 		   }elseif (!preg_match($nameReg, $offstreet)) {
 		      $error['offstreet'] = "Only charatcers,dot and space allowed in <b>Street</b>";
 		  }
    
-    //Office address city validation
+    	//Office address city validation
 		  if (empty($offcity)) {
 		     $error['offcity'] = "* this field can not be empty";
 		   } elseif (!preg_match($nameReg, $offcity)) {
@@ -131,7 +131,7 @@ require 'dbinfo.php';
 	
     
         
-   //uploading image file to the server and its validation. 
+   		//uploading image file to the server and its validation. 
 		if ($imag=="") {
 		     $error['image']="Please Select an Image";
 		    }
@@ -165,7 +165,7 @@ require 'dbinfo.php';
 		$query.=" '$firstname','$midname', '$lastname', ";
 		$query.=" '$sex', '$marital', '$dob', ";
 		$query.=" '$street', '$city', '$state', '$zip', '$phone', '$email', ";
-	$query.=" '$offstreet', '$offcity', '$offstate', '$offzip', '$offphone', '$offemail', ";
+	    $query.=" '$offstreet', '$offcity', '$offstate', '$offzip', '$offphone', '$offemail', ";
 		$query.=" '$imgvar', '$website','$link' ";
 		$query.=")";
 
