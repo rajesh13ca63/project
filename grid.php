@@ -1,5 +1,5 @@
 <?php
-	require 'header.php';
+	require 'admin.php';
 ?>
 <div class="container">
 <title>Gridview using jQuery DataTable plugin</title>

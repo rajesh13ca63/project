@@ -25,7 +25,7 @@
                        <a href="roles.php">Roles</a>
                     </li>
                     <li>
-                        <a href="privilage.php">Privilage</a>
+                        <a href="previlegepage.php">Privilege</a>
                     </li>
                     
                     <li>
