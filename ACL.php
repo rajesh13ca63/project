@@ -17,7 +17,7 @@ class ACL {
                 return $rol;
             }
             return false;
-            }
+        }
         
         //This is the method to adding roles in roles table in database
         public function addRole($role) {
@@ -42,7 +42,7 @@ class ACL {
             return false;
         }
        
-       //This is the method to show the view operation 
+       //This is the method to show the view action
         public function viewOperation() {
             require 'dbinfo.php';
             $query = "SELECT action 

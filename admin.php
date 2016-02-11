@@ -1,6 +1,8 @@
 <?php
-	session_start();
+    // echo 'in admin'; exit;
+	// session_start(); exit;
     require 'adminheader.php';
+
 ?>
 
     <!-- Navigation -->
@@ -25,7 +27,7 @@
                        <a href="roles.php">Roles</a>
                     </li>
                     <li>
-                        <a href="previlegepage.php">Privilege</a>
+                        <a href="privilegepage.php">Privilege</a>
                     </li>
                     
                     <li>
@@ -43,9 +45,9 @@
                 </ul>
                 
             </div>
-            <!-- /.navbar-collapse -->
+            
         </div>
-        <!-- /.container -->
+       
     </nav>
 
 
