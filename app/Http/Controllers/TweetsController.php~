@@ -1,0 +1,18 @@
+<?php
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use DB;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+class TweetsController extends Controller {
+    function viewTweets(Requests $request) {
+            $userid = $request['userid'];
+    echo '<pre>';print_r($userid);exit;
+    DB::table('users')->where('id',$userid);
+    $tweetid = $user->tweet 
+
+    return Twitter::viewTweets(['@nytimes' => 'thujohn', 
+	'count' => 20, 'format' => 'json']);
+    });   
+}

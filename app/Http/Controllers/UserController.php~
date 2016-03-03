@@ -1,0 +1,28 @@
+<?php
+namespace App\Http\Controllers;
+
+use Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+
+class UserController extends Controller {
+	
+	public function index()
+	{
+		return view('welcome');
+	}
+
+   //this is the method to fetching the values from database
+    public function display(Request $req)
+    {
+    	//$user = DB::table('users')->where('email', 'rajeshkumargupta001@gmail.com')->first();
+    	// var_dump(Auth::check());
+    	$user = $req->user();
+        $data['user'] = $user;
+        
+        return view('profile',  $data);
+    }
+
+
+}

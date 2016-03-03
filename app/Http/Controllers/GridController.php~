@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\User;
+use DB;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+class GridController extends Controller {
+           
+ 
+    public function gridusers(Request $request) {
+	$page = $request['page']; 
+	$limit = $request['rows']; 
+	$sidx = $request['sidx']; 
+	$sord = $request['sord']; 
+
+           if (!$sidx) $sidx =1; 
+                         
+                        $rows = DB::table('users')->get();
+			 echo'<pre>'; Print_r( $rows) ; echo '<pre>' ; exit;
+			/*$i = 0;
+                        foreach ($rows as $row) {
+                        	$responce->rows[$i]['id'] = $row['id'];
+				$responce->rows[$i]['cell'] = array(
+				                                $row->'firstname',
+								$row->lastname,
+								$row->sex, 
+                                                                $row->dob,
+								$row->marital,
+								$row->street,
+                                                                $row->city,
+								$row->state,
+                                                                $row->phone,
+								$row->email,
+								);
+
+	                  $i++;
+			}
+                        */
+
+
+   			//echo json_encode($responce); 
+
+                        return view('grid');
+                     
+
+   }
+    
+   	   
+}
