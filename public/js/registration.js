@@ -1,7 +1,5 @@
 $(document).ready(function() {
-	
 	$('#submit').click(function() {
-
 		var nameReg = /^[A-Za-z]+$/;
         var numberReg =  /^[0-9]+$/;
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -49,50 +47,41 @@ $(document).ready(function() {
 
 		if(password == "") {
 			$('#pass').text("Please type Password");
-			//return false;
 			cnterror++;
 		}
 
 		if (repassword == "") {
 			$('#repass').text("Please type Repassword");
-			//return false;
 			cnterror++;
 		}
 
 		if(firstname == "") {
 			$('#fname').text("Please type firstname");
 			cnterror++;
-			//return false;
-		}else if (!nameReg.test(firstname)) {
+		}
+    else if (!nameReg.test(firstname)) {
 			$('#fname').text("");
             $('#fname').text("Please type alphabets only");
            cnterror++;
-            //return false;
-        }
+    }
 
 		if(lastname == "") {
 			$('#lname').text("Please type lastname");
 		    cnterror++;
-			//return false;
-		}else if (!nameReg.test(lastname)) {
+		}
+    else if (!nameReg.test(lastname)) {
 			$('#lname').text("");
-            $('#lname').text("Please type alphabets only");
-            cnterror++;
-            //return false;
+      $('#lname').text("Please type alphabets only");
+      cnterror++;
+    }
+    if(midname == ""){
+
+    }
+    else if (!nameReg.test(midname)) {
+      $('#mname').text("Please type alphabets only");
+      cnterror++;
+      //return false;
         }
-        if(midname == "")
-        {}
-        else if (!nameReg.test(midname)) {
-            $('#mname').text("Please type alphabets only");
-            cnterror++;
-            //return false;
-        }
-       
-		// if(sex == "") {
-		// 	$('#sex').text("Please check the gender");
-			
-		// }
-     
     if(marital == "") {
 			$('#mar').text("Please check the marital status");
 			return false;
@@ -101,48 +90,41 @@ $(document).ready(function() {
 			$('#db').text("Please selct date of birth");
 		}
 
-		
     //jquery validation for residence address
         if(street == "") {
 			$('#st').text("Please write street");
 			cnterror++;
-			//return false;
 		}
 
 		if(city == "") {
 			$('#cty').text("Please write city");
 			cnterror++;
-			//return false;
 		}
 		if(state == "") {
 			$('#stat').text("Please write state");
 			cnterror++;
-			//return false;
 		}
 		if(zip == "") {
 			$('#zp').text("Please enter zip code");
 			cnterror++;
-			//return false;
 		}
 
 		if (phone == "") {
 			$('#ph').text("Please enter contact no");
 			cnterror++;
-			//return false;
-		}else if ((phone.length < 10) || (phone.length >10) || (!numberReg.test(phone))) {
+		}
+    else if ((phone.length < 10) || (phone.length >10) || (!numberReg.test(phone))) {
 			$('#ph').text("Please enter a valid phone number");
 			cnterror++;
-            }
-
+    }
 		if (email == "") {
 			$('#eml').text("Please enter emailid");
 			cnterror++;
-			//return false;
 		}else if (!emailReg.test(email) || email == '') {
-           alert('Please enter a valid email address.');
-           cnterror++;
-           //return false;
-        }
+        alert('Please enter a valid email address.');
+        cnterror++;
+           
+    }
 
     //jquery validation for office address
     if(offstreet == "") {
@@ -237,10 +219,7 @@ $(document).ready(function() {
 
                 },
                 success: function( response ) {
-                	   
-                    // 	window.location.replace("registration_insert.php");
-                    
-                    if (response.username) {
+                	  if (response.username) {
                        $('#user').text(response.username);
                        }else if(response.password) {
                        $('#pass').text(response.password);	
@@ -263,7 +242,7 @@ $(document).ready(function() {
                     if(response.marital) {
                        $('#mar').text(response.marital);	
                     }
-            //Residence address information errors shows
+                   //Residence address information errors shows
                     if(response.street) {
                        $('#st').text(response.street);	
                     }
@@ -283,7 +262,7 @@ $(document).ready(function() {
                        $('#eml').text(response.email);	
                     }
 
-            //Office Address errosr showing on the screen 
+                   //Office Address errosr showing on the screen 
                     if(response.offstreet) {
                        $('#st1').text(response.offstreet);	
                     }
@@ -305,16 +284,12 @@ $(document).ready(function() {
                     if(response.image) {
                     	$('#im').text(response.image);
                     }
-                                 
                 },
                  error: function(response) {
                 
                  }
             });
-
     	 }//end of else part	
-
-
-	});
+  	});
 });
 

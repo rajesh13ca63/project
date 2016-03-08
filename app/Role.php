@@ -9,7 +9,7 @@ class Role extends Model {
     	return $this->belongsToMany(Permission::class);
     }
 
-    public function assign(Permission $permission){
+    public function assign(Permission $permission) {
     	return $this->permissions()->save($permission);
     }
 }

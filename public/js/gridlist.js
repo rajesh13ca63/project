@@ -1,7 +1,6 @@
 $(document).ready(function () {
         
         //$(“.fancybox”).fancybox();
-
         //GRID CODE HERE
         $("#list_records").jqGrid({
             url: "./griduers",
@@ -61,18 +60,14 @@ $(document).ready(function () {
                 }
             }
     }); 
-
         $('#list_records').navGrid('#perpage', { 
                           edit: true, add: false,
                           del: true, search: true, 
                           refresh: true, view: true, 
                           position: "left", cloneToTop: true 
                           } );     
-         
-       // $('#list_records').jqGrid('filterToolbar', {stringResult: true, searchOnEnter: false}); 
+                 
         });
-
-
 //Calling viewTweet Method
 $.ajaxSetup({
     headers: {
@@ -82,7 +77,6 @@ $.ajaxSetup({
 
 function viewTweets(userid){
     //onsole.log(userid);
-
     $.ajax({
         method: "GET",
         url: "allTweets",
@@ -102,7 +96,6 @@ function viewTweets(userid){
                                         + myDate.getSeconds()
                                         +'::'+ json[i].text +json[i].name+ '<br/>'+'<br/>'); 
                  }
-                //$('#tweets').text(msg);
         }
     });
 }

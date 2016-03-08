@@ -36,9 +36,6 @@ class UserController extends Controller {
         
     //validation checking here..
     $this->validate($request, [
-    'name' => 'required | min:5 | max:20',
-    'password' => 'required | min:6 | max:25',
-    //'repassword' => 'required | same:password',
     'firstname' => 'required | alpha',
     'lastname' => 'required | alpha',
     'sex' => 'required',
@@ -52,8 +49,6 @@ class UserController extends Controller {
     'image' => 'mimes:jpeg,bmp,png'
     ]);
     
-    $name = $request->input('name');
-    $password = MD5($request->input('password'));
     $firstname = $request->input('firstname');
     $midname = $request->input('midname');
     $lastname = $request->input('lastname');
@@ -90,8 +85,8 @@ class UserController extends Controller {
 try {    
     $user = User::find(Auth::user()->id);
     
-    $user->name = $name;
-    $user->password = $password;
+    //$user->name = $name;
+    //$user->password = $password;
     $user->firstname = $firstname;
     $user->midname = $midname;
     $user->lastname =$lastname;
@@ -124,8 +119,6 @@ try {
 catch (Exception $e) {
         $e->getMessage();
     }
-}
-
-   
+ }
 }
 

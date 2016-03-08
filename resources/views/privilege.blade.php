@@ -23,8 +23,7 @@
                         @endforeach
                     </select>
 	            </div>
-	           
-            <div id="tab"></div>
+	        <div id="tab"></div>
         </form>
     </div>
 </div>

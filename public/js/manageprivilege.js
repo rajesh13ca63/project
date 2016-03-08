@@ -1,35 +1,32 @@
 $(document).ready(function() {
 	  //fist admin values is shows on screen 
-	    var username1 = $('#role_name').val();
+	  console.log('hello');
+	    var userid = $('#role_name').val();
 	        $.ajax({
-	                method: "POST",
-	                url: "manageprivilegejs.php",
+	                method: "GET",
+	                url: "manageprivilegejs",
                     data: {
-	                       userid: username1
+	                       userid: userid
 	                },
-	                
 	                success:function(msg) {
-	                	//console.log(JSON.stringify(msg));
-	                	   $('#tab').html(msg);
-	                 
+	                	console.log(JSON.stringify(msg));
+	                	$('#tab').html(msg);
 	                }
 	        });
 
-       //Afteer changing the role it will works
+       //Afteer changing the role it will works like Admin, Teacher, superadmin
 	   $("#role_name").on("change", function(){
 	       var username = $('#role_name').val();
-
 	        $.ajax({
-	                method: "POST",
-	                url: "manageprivilegejs.php",
+	                method: "GET",
+	                url: "manageprivilegejs",
                     data: {
 	                       userid: username
 	                },
-	                
-	                success:function(msg) {
-	                	//console.log(JSON.stringify(msg));
+	              
+                    success:function(msg) {
+	                    console.log(JSON.stringify(msg));
 	                	   $('#tab').html(msg);
-	                 
 	                }
 	        });
 	   });
@@ -39,8 +36,8 @@ $(document).ready(function() {
 function changeprivilege(result, role, resource_id, action_id) {   
 	console.log(result);
     $.ajax({
-        method: 'POST',
-        url: 'privilegepost.php',
+        method: 'GET',
+        url: 'privilegepost',
         dataType: 'json',
         data: {
           result:result,
