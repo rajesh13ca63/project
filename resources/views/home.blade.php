@@ -31,22 +31,22 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="image/student.jpeg" alt="Show" 
-                                width="300" height="300">
+                                <img src="image/univ.jpeg" alt="Show" 
+                                width="" height="">
                             </div>
                             <div class="item">
-                                <img src="image/profile.jpeg" alt="Edit" 
-                                width="300" height="300">
+                                <img src="image/stud.jpeg" alt="Edit" 
+                                width="" height="">
                             </div>
                         
                             <div class="item">
-                                <img src="image/index1.jpeg" alt="Delete" 
-                                width="300" height="300">
+                                <img src="image/univ1.jpeg" alt="Delete" 
+                                width="" height="">
                             </div>
 
                             <div class="item">
-                                <img src="image/tweet.jpeg" alt="Tweets" 
-                                width="300" height="300">
+                                <img src="image/std1.jpeg" alt="Tweets" 
+                                width="" height="">
                             </div>
                         </div>
                         <!-- Left and right controls -->
