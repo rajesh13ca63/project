@@ -1,17 +1,12 @@
 @extends('layouts.app')
 @section('content')
-
-</script>
-<style>
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-  width: 50%;
-  margin: auto;
-}
-</style>
-<sript>
 <div class="container">
     <div class="row">
+        @if(session('status'))
+            <div class="alert alert-danger">
+                {{session('status')}}
+            </div>
+        @endif
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">WelCome</div>
@@ -65,10 +60,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-  
-  
-  
-
- 
+@endsection 

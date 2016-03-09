@@ -15,6 +15,7 @@
     <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css' />
     <link rel='stylesheet' type='text/css' href='http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css' />
     <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse">
@@ -27,8 +28,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <!-- Branding Image -->
-                <!--   <a class="navbar-brand" href="{{ url('/') }}">Laravel</a>-->
             </div>
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->

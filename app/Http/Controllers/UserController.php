@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller {
 	public function index()	{
-	
     	return view('welcome');
 	}
 
@@ -52,21 +51,18 @@ class UserController extends Controller {
         $sex = $request->input('sex');
         $marital = $request->input('marital');
         $dob = $request->input('dob');
-        
         $street = $request->input('street');
         $city = $request->input('city');
         $state = $request->input('state');
         $zip = $request->input('zip');
         $phone = $request->input('phone');    
         $email = $request->input('email');
-
         $offstreet = $request->input('offstreet');
         $offcity = $request->input('offcity');
         $offstate = $request->input('offstate');
         $offzip = $request->input('offzip');
         $offphone = $request->input('offphone');    
         $offemail = $request->input('offemail');
-
         $image = $request->input('image');
         $comment = $request->input('comment');
 
@@ -89,7 +85,7 @@ class UserController extends Controller {
            
         $user->firstname = $firstname;
         $user->midname = $midname;
-        $user->lastname =$lastname;
+        $user->lastname = $lastname;
         $user->sex = $sex;
         $user->marital = $marital;
         $user->dob = $dob;
@@ -116,6 +112,7 @@ class UserController extends Controller {
 
       	return redirect('getupdate')->with('status', 'Profile Updated Successfully.');
         }//end of insert method
+
     catch (Exception $e) {
             $e->getMessage();
         }

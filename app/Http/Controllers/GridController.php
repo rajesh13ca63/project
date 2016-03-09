@@ -14,7 +14,7 @@ class GridController extends Controller {
 		$sidx = $request['sidx']; 
 		$sord = $request['sord']; 
 
-        if (!$sidx) $sidx =1; 
+        if (!$sidx) $sidx = 1; 
                      
         $rows = DB::table('users')->get();
 		$i = 0;

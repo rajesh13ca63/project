@@ -67,7 +67,7 @@ class PrivilegeController extends Controller {
 	        $permission_id = $request['action_id'];
 	        $result = $request['result'];
 	        
-	        if ($result==="true") {
+	        if ($result === "true") {
 		        DB::table('role_perm')
 		          ->insert(['role_id' => $role,
 		                    'permission_id' => $permission_id,

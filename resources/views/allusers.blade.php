@@ -59,7 +59,7 @@
             </div>
             <div class="col-sm-3 form-group">
                 <h3>Assigned Role</h3>
-                @foreach($roleassign as $role) 
+                @foreach($userassign as $role) 
                     <b>{{ $role->role_name }}</b><br/>
                 @endforeach
             </div>

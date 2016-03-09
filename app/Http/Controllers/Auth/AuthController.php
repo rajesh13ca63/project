@@ -41,14 +41,12 @@ class AuthController extends Controller {
         'name' => 'required|max:25',
         'email' => 'required | email |max:255 | unique:users',
         'password' => 'required|confirmed|min:6',
-            
-	    'firstname' => 'required | alpha',
+        'firstname' => 'required | alpha',
 	    'lastname' => 'required | alpha',
 	    'sex' => 'required',
 	    'marital' => 'required',
 	    'dob' => 'required',
-
-	    'street' => 'required |regex:/(^[A-Za-z]+$)+/',
+        'street' => 'required |regex:/(^[A-Za-z]+$)+/',
 	    'state' => 'required | alpha',
 	    'zip'  => 'required | numeric',
 	    'phone' => 'required | numeric',

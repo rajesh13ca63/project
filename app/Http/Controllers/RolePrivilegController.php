@@ -11,37 +11,16 @@ class RolePrivilegController extends Controller {
 		$rows = DB::table('users')->get();
 		$roles = DB::table('roles')->get();
 		/*
-		Select the user id from role_user table then its corresponding name from users table
+		Select the user id from users table then its corresponding name from users table
 		*/
-		$users = DB::table('role_user')
-		           ->select('user_id')
-		           ->get();
-	    
-	    foreach ($users as $user) {
-		    $userassign[] = DB::table('users')
-		                 ->select('name')
-		                 ->where('id',$user->user_id)
-		                 ->first();
-		}
-
-        /*
-        Select Role_id from role_user table and Rolename from Parents table roles table
-        */
-	    $assingrole = DB::table('role_user')
-		                ->select('role_id')
+	    $userassign = DB::table('users')
+		                ->join('roles', 'users.role', '=', 'roles.id')
+		                ->select('users.name', 'roles.role_name')
 		                ->get();
-
-		foreach ($assingrole as $role) {
-		    $roleassigned[] = DB::table('roles')
-		 	                    ->select('role_name')
-		 	                    ->where('id',$role->role_id)
-		 	                    ->first();
-		}
-
+		
 		return view('allusers', array('rows' => $rows,
 			                          'roles' => $roles,
 			                          'userassign' => $userassign,
-			                          'roleassign' => $roleassigned
 			                        ));
 
 	}
@@ -80,7 +59,7 @@ class RolePrivilegController extends Controller {
 		$resource = $request['resource'];
 		$perm = $request['newperm'];
 
-		if ($newrole=="" || $newperm =="" || $newres =="") {
+		if ($newrole == "" || $newperm == "" || $newres == "") {
            
            return redirect('roleresourceperm')->with('status','Please Enter Text Value');
 		}
@@ -89,12 +68,10 @@ class RolePrivilegController extends Controller {
 		if ($operation == "AddRole") {
             DB::table('roles')
               ->insert(['role_name' => $newrole]);
-        }
-        elseif ($operation == "AddResource") {
+        } elseif ($operation == "AddResource") {
             DB::table('resources')
               ->insert(['resource_name' => $newres]);
-        }
-        elseif ($operation == "AddPermission") {
+        } elseif ($operation == "AddPermission") {
             DB::table('permissions')
               ->insert(['permission_name' => $newperm]);
         }
@@ -124,32 +101,29 @@ class RolePrivilegController extends Controller {
     
     //This is Role Change Method, After selecting Username
 	function rolechange(Request $request) {
-		$roleid= $request['role'];
-		$userid= $request['users'];
+		$roleid = $request['role'];
+		$userid = $request['users'];
 		$operation = $request['submit'];
 		
-		if ($roleid ==0 || $userid==0) {
+		if ($roleid == 0 || $userid== 0) {
 			
 			return redirect('allusers')->with('operation', 'Please Select Username/UserType');
 		}
+        if($operation == 'Add') {
+		DB::table('users')
+	      ->where('id', $userid)
+		  ->update(['role' => $roleid]);
 
-		if ($operation == 'Add') {
-			DB::table('role_user')
-			  ->insert(
-	                   ['role_id' => $roleid,
-	                    'user_id' => $userid]                          
-	                );
-			
-			return redirect('allusers')->with('operation', 'Records Successfully Updated');
-		}
+		  return redirect('allusers')->with('operation', 'Records Successfully Updated');
+		 }
+		 
+		
+    	if ($operation == 'Delete') {
+			DB::table('users')
+	          ->where('id', $userid)
+		      ->update(['role' => '0']);
 
-		if ($operation == 'Delete') {
-			DB::table('role_user')
-			  ->where('role_id', $roleid)
-			  ->where('user_id', $userid)
-			  ->delete();
-			
-			return redirect('allusers')->with('operation', 'Records Successfully Updated');
+		  return redirect('allusers')->with('operation', 'Records Successfully Updated');
 		}
 		
 	}
