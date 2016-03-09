@@ -15,15 +15,6 @@
     <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css' />
     <link rel='stylesheet' type='text/css' href='http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css' />
     <link rel="stylesheet" type="text/css" media="screen" href="css/ui.jqgrid.css" />
-    
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse">
@@ -94,7 +85,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="fancyapps/source/jquery.fancybox.js"></script>
-    <script src="js/grid.locale-en.js" type="text/javascript"></script>
+    <script src="{{ URL::to('js/grid.locale-en.js') }}" type="text/javascript"></script>
     <script src="js/manageprivilege.js"  type="text/javascript"></script>
+    <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/gridlist.js?version=123"></script>
 </body>
 </html>

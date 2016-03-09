@@ -20,7 +20,11 @@
                 @endif
             </div>
         </div>
-    
+        @if(session('status'))
+            <div class="alert alert-success">
+            {{session('status')}}
+            </div>
+        @endif
         <form id="register" enctype="multipart/form-data"                
         method="post" action="{{url('/getupdate')}}"> 
         {!! csrf_field() !!}                             
@@ -124,8 +128,8 @@
                 <div class="col-sm-6">
                     <label>UploadImage</label>
                     <input type="file" name="image" value="{{$user->image}}"
-                     class="form-control"><br/>
-                     <img src="image/{{$user->image}}"/>
+                    class="form-control"><br/>
+                    <img src="image/{{$user->image}}"/>
                 </div>
                 <div class="col-sm-6 form-group">               
                     <label>Comment</label>

@@ -1,7 +1,5 @@
 $(document).ready(function () {
         
-        //$(“.fancybox”).fancybox();
-        //GRID CODE HERE
         $("#list_records").jqGrid({
             url: "./griduers",
             editurl:"UpdateInfo",
@@ -86,7 +84,6 @@ function viewTweets(userid){
         },
 
         success:function(msg) {
-                console.log(msg);
                 var json = JSON.parse(msg);
                 for (var i = 0; i < json.length; i++) { 
                     myDate = new Date(json[i].created_at);
@@ -95,7 +92,7 @@ function viewTweets(userid){
                                         myDate.getHours() + ":" + myDate.getMinutes() + ":" 
                                         + myDate.getSeconds()
                                         +'::'+ json[i].text +json[i].name+ '<br/>'+'<br/>'); 
-                 }
+                }
         }
     });
 }

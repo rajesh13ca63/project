@@ -6,6 +6,16 @@
    <h1 class="well" align="center">Adminstration Page</h1>
    <!--Role Adddition and Deletion-->
      <div class="jumbotron">
+        @if (session('operation'))
+            <div class="alert alert-success">
+                {{ session('operation') }}
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert alert-danger">
+                {{ session('status') }}
+            </div>
+        @endif
         <form id="role" enctype="multipart/form-data" method="post" 
         action="{{url('/roleresourceperm')}}">{!! csrf_field() !!}            
             <h3>Role Description </h3><br>

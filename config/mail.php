@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT',587),
+    'port' => env('MAIL_PORT',465),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => array('address' => rajeshkumargupta001@gmail.com, 'name' => 'rajesh gupta'),
+    'from' => array('address' => 'rajeshkumargupta001@gmail.com', 'name' => 'rajesh gupta'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => env("13ca63mca@rajesh"),
+    'password' => env('13ca63mca@rajesh'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,6 +108,6 @@ return [
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 
-    'pretend' => false,
+    //'pretend' => false,
 
 ];

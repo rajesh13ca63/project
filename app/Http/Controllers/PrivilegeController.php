@@ -10,7 +10,9 @@ class PrivilegeController extends Controller {
     function manageprivilege(Request $request) {
 			$role = $request['userid'];
 			$outputTable = '';
-	        $permissions = DB::table('permissions')->get();
+	        $permissions = DB::table('permissions')
+	                         ->get();
+	        
 	        foreach($permissions as $row) {
 	            $actionInfo[] = $row;
 	        }
@@ -33,8 +35,10 @@ class PrivilegeController extends Controller {
 		    }
 
 		    //Fetching id and name from Resource Table
-		    $rows = DB::table('resources')->get();
+		    $rows = DB::table('resources')
+		              ->get();
 		    $count = 0;
+		    
 		    foreach ($rows as $resource ) {
 		    	$resources[$count]['id'] = $resource->id;
 		    	$resources[$count]['resource_name'] = 
@@ -42,14 +46,16 @@ class PrivilegeController extends Controller {
 		    	$count =  $count + 1;
 		    }
 
-		    foreach($resources as $resource) {
+		    foreach ($resources as $resource) {
 		        $outputTable .= '<table id="res">
 		        <tr><td>'. $resource['resource_name'].'</td><td><td>&nbsp;&nbsp;&nbsp;</td><td>';
+		   
 		    foreach ($actionInfo as $action) {
 		        $outputTable .='<input type="checkbox" '.'onchange="changeprivilege(this.checked,'.$role.','.$resource["id"].','.$action->id.') " name="check['. $resource['id'] .'][]" id="check" value="'  . $action->id  .' " '. (isset($arr[$role. '-' .$resource["id"]. '-' .$action->id] ) ? 'checked="checked"' : '').' /> '.$action->permission_name . '&nbsp;&nbsp;';
 		    }
 		        $outputTable .= '</td></tr></table>';
 		    }
+
 		    return  $outputTable;
 		}
 
@@ -76,8 +82,7 @@ class PrivilegeController extends Controller {
 		          ->delete(); 
 	        }
 	    }
-	    
-    }
+	}
 }
 
 

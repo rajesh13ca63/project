@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use DB;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,6 +18,7 @@ class GridController extends Controller {
                      
         $rows = DB::table('users')->get();
 		$i = 0;
+        
         foreach ($rows as $row) {
             $response->rows[$i]['id'] = $row->id;
 			$response->rows[$i]['cell'] = array(
@@ -35,6 +36,7 @@ class GridController extends Controller {
 
                 $i++;
        	}
+		
 		return json_encode($response); 
 	}
 	
@@ -46,7 +48,6 @@ class GridController extends Controller {
 		$sord = $request['sord']; 
 		$search_field = $request['searchField'];
 	    $search_string = $request['searchString'];
-
         $firstname = $request['firstname'];
 		$lastname = $request['lastname'];
 		$sex = $request['sex'];
@@ -66,73 +67,25 @@ class GridController extends Controller {
 		
 		//For Updating Data using Jqgrid
 		if ($request['oper'] == 'edit') {
-		
-		  try {    
-           	$user = User::find($id);	
-		    $user->firstname = $firstname;
-		    $user->lastname = $lastname;
-		    $user->sex = $sex;
-		    $user->marital = $marital;
-		    $user->dob = $dob;
+		    try {    
+	           	$user = User::find($id);	
+			    $user->firstname = $firstname;
+			    $user->lastname = $lastname;
+			    $user->sex = $sex;
+			    $user->marital = $marital;
+			    $user->dob = $dob;
 
-		    $user->street = $street;
-		    $user->city = $city;
-		    $user->state = $state;
-		    $user->phone = $phone;
-		    $user->email = $email;	
-            $user->save();
-             \Session::flash('flash_message','successfully saved.');
-
-          // Redirect::back()->with('message', 'message|Record updated.');
-
-		  	}//End of EditInfo Method
-		  catch (Exception $e) {
+			    $user->street = $street;
+			    $user->city = $city;
+			    $user->state = $state;
+			    $user->phone = $phone;
+			    $user->email = $email;	
+	            $user->save();
+	        }
+		    catch (Exception $e) {
 		        $e->getMessage();
 		    }					
-
 		}
-		
-    //Searching Users Data Using Jqgrid
-    if ($request['oper'] == 'search') {
-        //$rows = DB::table('users')->get();
-		//$count = $rows->count();
-
-		
-		// if ($search_string && $search_field) {
-		// 	$row = DB::table('users')
-		// 	          ->where ('$search_field', $search_string);
-		// 	          ->orderBy($sid, $sord)
-		// 	          ->Limits($start , $limit);
-		// 	          ->get();
-		// 	return json_encode($row);
-			
-	 //    }else {
-		// 	$row = DB::table('users')
-		// 	         ->orderBy($sid, $sord)
-		// 	         ->Limits ($start , $limit);
-		// 	return json_encode($row);
-		// }
-
-		$i=0;
-		/*foreach ($rows as $row) {
-			
-			$response->rows[$i]['id'] = $row['id'];
-			$response->rows[$i]['cell'] = array( 
-				                        $row->firstname,
-						             	$row->lastname,
-							            $row->sex, 
-                                        $row->dob,
-							            $row->marital,
-							            $row->street,
-                                        $row->city,
-							            $row->state,
-                                        $row->phone,
-							            $row->email,
-										);
-			$i++;
-		}*/
-
-    }
-		//return json_encode($response);
+		   
     }
 }

@@ -5,6 +5,11 @@
    <h1 class="well" align="center">Adminstration Page</h1>
    <!--Role Assign to a particuler user-->
      <div class="jumbotron">
+        @if (session('operation'))
+            <div class="alert alert-success">
+                {{ session('operation') }}
+            </div>
+        @endif
         <form id="role" enctype="multipart/form-data" method="post" action="{{url('/postrole')}}">{!! csrf_field() !!}  
             <h3>Role Description </h3><br>
                 <div class="row">
@@ -13,7 +18,7 @@
                             <h4>Select UserName</h4>
                         </div>   
                         <select name='users' id='users' >
-                            <option>Select
+                            <option value="0">Select</option>
                             @foreach($rows as $user) 
                                 <option value="{{ $user->id }}">
                                 {{ $user->name }}</option>
@@ -26,7 +31,7 @@
                             <h4>User Type</h4>
                         </div>   
                         <select name='role' id='role'>
-                            <option value="">Select
+                            <option value="0">select</option>
                             @foreach($roles as $role) 
                                 <option value="{{ $role->id }}">
                                 {{ $role->role_name }}</option>

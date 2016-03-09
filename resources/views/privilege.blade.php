@@ -2,7 +2,7 @@
 @section('content')
 <!--HTML Code for Loginpage-->
 <div class="container">
-   <h1 class="well" align="center">Role Privileges</h1>
+    <h1 class="well" align="center">Role Privileges</h1>
      <div class="jumbotron">
         <form id="role" enctype="multipart/form-data" method="post" action="{{url('/privilege')}}">{!! csrf_field() !!}            
             <h3>Role Description </h3><br>

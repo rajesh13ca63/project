@@ -49,7 +49,6 @@
                                 width="300" height="300">
                             </div>
                         </div>
-
                         <!-- Left and right controls -->
                         <a class="left carousel-control" href="#myCarousel" 
                         role="button" data-slide="prev">
@@ -59,14 +58,13 @@
                         </a>
                         <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
+                        <span class="sr-only">Next</span>
                         </a>
                     </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
 
   
