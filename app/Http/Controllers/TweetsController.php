@@ -11,7 +11,7 @@ class TweetsController extends Controller {
     function viewTweets(Request $request) {
         $userid = $request['userid'];
 	    $rows = DB::table('users')
-	              ->where('id',$userid)
+	              ->where('id', $userid)
 	              ->first();
 	              
 	    $tweetid = $rows->tweet;
@@ -19,5 +19,5 @@ class TweetsController extends Controller {
 		'count' => 20, 'format' => 'json']);
 		 
 		return $tweet;
-	}     
+	}
 }

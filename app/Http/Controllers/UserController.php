@@ -30,6 +30,7 @@ class UserController extends Controller {
 
     //This is the method to update the user database
     public function update(Request $request) {
+        
         //validation checking here..
         $this->validate($request, [
         'firstname' => 'required | alpha',
@@ -77,43 +78,41 @@ class UserController extends Controller {
             }
 
             $image = $image->getClientOriginalName();
-    }
+        }
     
     //Udating database using try and catch block
-    try {    
-        $user = User::find(Auth::user()->id);
-           
-        $user->firstname = $firstname;
-        $user->midname = $midname;
-        $user->lastname = $lastname;
-        $user->sex = $sex;
-        $user->marital = $marital;
-        $user->dob = $dob;
-        $user->street = $street;
-        $user->city = $city;
-        $user->state = $state;
-        $user->zip = $zip;
-        $user->phone = $phone;
-        $user->email = $email;
-        $user->offstreet = $offstreet;
-        $user->offcity = $offcity;
-        $user->offstate = $offstate;
-        $user->offzip = $offzip;
-        $user->offphone = $offphone;
-        $user->offemail = $offemail;
+        try {    
+            $user = User::find(Auth::user()->id);
+               
+            $user->firstname = $firstname;
+            $user->midname = $midname;
+            $user->lastname = $lastname;
+            $user->sex = $sex;
+            $user->marital = $marital;
+            $user->dob = $dob;
+            $user->street = $street;
+            $user->city = $city;
+            $user->state = $state;
+            $user->zip = $zip;
+            $user->phone = $phone;
+            $user->email = $email;
+            $user->offstreet = $offstreet;
+            $user->offcity = $offcity;
+            $user->offstate = $offstate;
+            $user->offzip = $offzip;
+            $user->offphone = $offphone;
+            $user->offemail = $offemail;
 
-        if (isset($image)) {
-            $user->image = $image;
-        }
-        
-        $user->comment = $comment;
-     
-        $user->save();
+            if (isset($image)) {
+                $user->image = $image;
+            }
+            
+            $user->comment = $comment;
+         
+            $user->save();
 
-      	return redirect('getupdate')->with('status', 'Profile Updated Successfully.');
-        }//end of insert method
-
-    catch (Exception $e) {
+          	return redirect('getupdate')->with('status', 'Profile Updated Successfully.');
+        } catch (Exception $e) {
             $e->getMessage();
         }
     }

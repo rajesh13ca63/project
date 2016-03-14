@@ -10,6 +10,7 @@ class RolePrivilegController extends Controller {
 	function usersinfo() {
 		$rows = DB::table('users')->get();
 		$roles = DB::table('roles')->get();
+		
 		/*
 		Select the user id from users table then its corresponding name from users table
 		*/
@@ -61,7 +62,7 @@ class RolePrivilegController extends Controller {
 
 		if ($newrole == "" || $newperm == "" || $newres == "") {
            
-           return redirect('roleresourceperm')->with('status','Please Enter Text Value');
+           return redirect('roleresourceperm')->with('status', 'Please Enter Text Value');
 		}
 
 	    //Adding NewResource ,NewRole And NewPermission
@@ -77,13 +78,15 @@ class RolePrivilegController extends Controller {
         }
 
         //Deleting Existing Role Permission and Resources
-        if ($operation == "DeleteRole") {
+        if ($operation == "DeleteRole") 
+        {
             DB::table('roles')
               ->where('role_name',$role )
               ->delete();   
         }
 
-        if ($operation == "DeleteResource") {
+        if ($operation == "DeleteResource") 
+        {
             DB::table('resources')
               ->where('resource_name',$resource )
               ->delete();   
@@ -95,7 +98,8 @@ class RolePrivilegController extends Controller {
               ->delete();   
         }
 
-        return redirect('roleresourceperm')->with('operation', 'Sucessfully Added new Records');
+        return redirect('roleresourceperm')
+        ->with('operation', 'Sucessfully Added new Records');
        
 	}
     
@@ -107,23 +111,27 @@ class RolePrivilegController extends Controller {
 		
 		if ($roleid == 0 || $userid== 0) {
 			
-			return redirect('allusers')->with('operation', 'Please Select Username/UserType');
+			return redirect('allusers')
+			->with('operation', 'Please Select Username/UserType');
 		}
-        if($operation == 'Add') {
-		DB::table('users')
-	      ->where('id', $userid)
-		  ->update(['role' => $roleid]);
+        
+        if($operation == 'Add') 
+        {
+			DB::table('users')
+		      ->where('id', $userid)
+			  ->update(['role' => $roleid]);
 
-		  return redirect('allusers')->with('operation', 'Records Successfully Updated');
-		 }
+			  return redirect('allusers')
+			  	->with('operation', 'Records Successfully Updated');
+		}
 		 
-		
-    	if ($operation == 'Delete') {
+    	if ($operation == 'Delete') 
+    	{
 			DB::table('users')
 	          ->where('id', $userid)
 		      ->update(['role' => '0']);
 
-		  return redirect('allusers')->with('operation', 'Records Successfully Updated');
+		  	return redirect('allusers')->with('operation', 'Records Successfully Updated');
 		}
 		
 	}
