@@ -1,0 +1,29 @@
+ .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
+  }
+body {
+        font-family: 'Lato';
+    }
+    .fa-btn {
+        margin-right: 6px;
+    }
+
+footer {
+    background: #000000;
+    background: rgb(0,0,0);
+    color:rgb(255,255,255);
+    bottom: 0;
+
+}
+
+footer p {
+    margin: 0;
+    padding: 25px;
+    width:100%;
+}
+
+#main {
+  min-height: 550px;
+}
