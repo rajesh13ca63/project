@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
     <h3 class="well"  align="center"> Personal Information</h3>
         <div class="col-lg-12 well">

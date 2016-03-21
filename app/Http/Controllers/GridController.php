@@ -14,7 +14,7 @@ class GridController extends Controller {
 		$sidx = $request['sidx']; 
 		$sord = $request['sord']; 
 
-        if (!$sidx) $sidx =1; 
+        if (!$sidx) $sidx = 1; 
                      
         $rows = DB::table('users')->get();
 		$i = 0;
@@ -36,6 +36,7 @@ class GridController extends Controller {
 
                 $i++;
        	}
+
 		return json_encode($response); 
 	}
 	
@@ -47,7 +48,7 @@ class GridController extends Controller {
 		$sord = $request['sord']; 
 		$search_field = $request['searchField'];
 	    $search_string = $request['searchString'];
-
+        
         $firstname = $request['firstname'];
 		$lastname = $request['lastname'];
 		$sex = $request['sex'];
@@ -62,7 +63,9 @@ class GridController extends Controller {
        
         //cheching the condition for deleting data
         if ($request['oper'] == 'del') {
-		   DB::table('users')->where('id',$id)->delete();				
+		   DB::table('users')
+		     ->where('id',$id)
+		     ->delete();				
 		}
 		
 		//For Updating Data using Jqgrid
@@ -81,7 +84,8 @@ class GridController extends Controller {
 			    $user->email = $email;	
 	            $user->save();
 	            
-                return Redirect('UpdateInfo')->with('status', 'Record updated Successfully');
+                return Redirect('UpdateInfo')
+                      ->with('status', 'Record updated Successfully');
      	  	}
 		  
 		    catch (Exception $e) {

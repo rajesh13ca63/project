@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use Auth;
 use Illuminate\Support\Validator;
@@ -32,7 +33,6 @@ class UserController extends Controller {
     Validation checking at the time of user Updation existing form after login*/
     public function update(Request $request) {
         $this->validate($request, [
-        
         'firstname' => 'required | alpha',
         'lastname' => 'required | alpha',
         'sex' => 'required',
@@ -116,9 +116,8 @@ class UserController extends Controller {
          
             $user->save();
 
-        return redirect('getupdate')->with('status', 'Profile Updated Successfully.');
+            return redirect('getupdate')->with('status', 'Profile Updated Successfully.');
         }
-
         catch (Exception $e) {
             $e->getMessage();
         }

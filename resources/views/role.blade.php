@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
 <!--HTML Code for Loginpage-->
 <div class="container">
-   <h1 class="well" align="center">Adminstration Page</h1>
+    <h1 class="well" align="center">Adminstration Page</h1>
    <!--Role Adddition and Deletion-->
-     <div class="jumbotron">
+        <div class="jumbotron">
         @if (session('operation'))
             <div class="alert alert-success">
                 {{ session('operation') }}

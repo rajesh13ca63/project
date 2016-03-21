@@ -125,8 +125,7 @@ return [
 
         'Thujohn\Twitter\TwitterServiceProvider',
         //'Aloha\Twilio\Support\Laravel\ServiceProvider',
-        'Aloha\Twilio\TwilioServiceProvider',
-
+        //'Aloha\Twilio\TwilioServiceProvider',
        
         /*
          * Laravel Framework Service Providers...
@@ -152,6 +151,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider,
 
         /*
          * Application Service Providers...
@@ -175,9 +175,6 @@ return [
     */
 
     'aliases' => [
-        'Twitter' => 'Thujohn\Twitter\Facades\Twitter',
-        //'Twilio' => 'Aloha\Twilio\Support\Laravel\Facade',
-        'Twilio' => 'Aloha\Twilio\Facades\Twilio',
 
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
@@ -209,7 +206,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-
+        
+        'Twitter'   => Thujohn\Twitter\Facades\Twitter,
+        'Socialite' => Laravel\Socialite\Facades\Socialite,
     ],
 
 ];

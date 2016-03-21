@@ -1,11 +1,38 @@
 <?php
-
+ //Using method for twilio implementatison
+    Route::get('sendmessage', 'TwilioController@sendmessage');
+    Route::post('UpdateInfo', 'GridController@UpdateInfo');
+       
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
+    //Thsi route is used for welcome page
     Route::get('/', function () {
     return view('welcome');
     });
+
+    Route::get('home', array('as' => 'home', 'uses' => function(){
+        return view('home');
+    }));
+
+    //Routes for About the company and what technology used
+    Route::get('about', function() {
+        return view('about');
+    });
+
+    //Routes for Career and Application Form
+    Route::get('career', function(){
+        return view('career');       
+    });
+    Route::get('application', function(){
+        return view('application');       
+    });
+    Route::post('postapplication', 'ApplicationController@postapplication');
+
+
+    Route::get('regemail', function() {
+        return view('regemail');
+    })->middleware('auth');
+
     Route::get('roleresourceperm', function() {
         return view('role')->middleware('isAdmin');
     });
@@ -16,11 +43,10 @@ Route::group(['middleware' => 'web'], function () {
     return view('profile')->middleware('auth');
     });
    
-    Route::get('home', 'HomeController@index')->middleware('auth'); 
-    Route::get('display', 'UserController@display') 
-    ->middleware('auth');
-    Route::post('UpdateInfo', 'GridController@UpdateInfo')
-    ->middleware('auth');
+   // Route::get('home', 'HomeController@index')->middleware('auth');
+   
+    Route::get('display', 'UserController@display')->middleware('auth');
+   
     Route::get('allusers', 'RolePrivilegController@usersinfo')
     ->middleware('isAdmin');
     Route::get('getupdate', 'UserController@getupdate')->middleware('auth');
@@ -50,7 +76,20 @@ Route::group(['middleware' => 'web'], function () {
     ->middleware('isAdmin');
     Route::get('manageprivilegejs', 'PrivilegeController@manageprivilege')
     ->middleware('isAdmin');
+   
+    //These Routes are used for reivew display and review post
+    Route::get('review', 'ReviewController@review')
+    ->middleware('auth');
+    
+    Route::post('reviewPost', 'ReviewController@reviewPost')
+    ->middleware('auth');
 
-    //Using here twilio
-    Route::get('sendmessage', 'TwilioController@sendmessage');
+    //Creating method to activate linke 
+    Route::get('activate/{link}','HomeController@activateAccount');
+   // Route::post('home', 'UserloginController@authenticate')
+    
+    //These routes are used for facebook login
+    Route::get('auth/facebook', 'FacebookLoginController@redirectToProvider');
+    Route::get('auth/facebook/callback', 'FacebookLoginController@handleProviderCallback');
+
 });

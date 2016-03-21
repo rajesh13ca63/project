@@ -72,8 +72,8 @@
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>6.Date of Birth</label>
-                            <input type="date" name="dob" id="dob" 
-                            value="{{$user->dob}}" class="date">
+                            <input  type="text" name="dob" id="dob"
+                            value="{{$user->dob}}">   
                         </div>
                     </div>
                     <!--Residence Address in Html form-->                  

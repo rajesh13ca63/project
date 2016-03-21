@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('fancyapps/source/jquery.fancybox.css?v=2.1.5') }}" media="screen" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::asset('css/ui.jqgrid.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/custom.css') }}" />
-       
+    <!--These file are used for date formate-->
+    <link rel="stylesheet" href="{{ URL::asset('css/datepicker.css') }}">
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-inverse">
@@ -37,6 +38,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/about') }}">About</a></li>
+                </ul>
             @else
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
@@ -48,7 +52,7 @@
                     <li><a href="{{ url('/getupdate') }}">Edit Profile</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/griddemo') }}">Grid</a></li>
+                    <li><a href="{{ url('/griddemo') }}">AllGrid</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/roleresourceperm') }}"><b>Manage</b></a></li>
@@ -59,6 +63,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/allusers') }}"><b>Users Role</b></a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/review') }}"><b>Review</b></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url('career')}}"><b>Career</b></a></li>
+                </ul>
+                
            @endif
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -70,6 +81,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} 
+                            <img src="image/{{ Auth::user()->image }}" width="30" 
+                            height=30>
                             <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
@@ -98,8 +111,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/fancyapps/source/jquery.fancybox.js"></script>
     <script src="/js/grid.locale-en.js" type="text/javascript"></script>
+    <!-- Load jQuery and bootstrap datepicker scripts -->
+    <script src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ URL::asset('js/manageprivilege.js') }}"></script>
-    <script src="{{ URL::asset('js/gridlist.js?version=123')}}"></script>
-    <script src="{{ URL::asset('js/jquery.jqGrid.min.js')}}"></script>
+    <!--Jqrid load for all user and tweets-->
+    <script src="{{ URL::asset('js/gridlist.js?version=1.2') }}"></script>
+    <script src="{{ URL::asset('js/jquery.jqGrid.min.js') }}"></script>
 </body>
 </html>

@@ -3,8 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermRoleTable extends Migration
-{
+class CreatePermRoleTable extends Migration {
     /**
      * Run the migrations.
      *

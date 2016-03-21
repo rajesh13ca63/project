@@ -62,6 +62,7 @@ class PrivilegeController extends Controller {
         This is the Method to Update the data in Privileges which is assigned by admin for more operation like edit ,delete, view and all
         */
 	    function privilegpost(Request $request) {
+	       
 	       if ($request['role'] && $request['resource_id'] &&
 	        $request['action_id']) {
 	       	
@@ -70,14 +71,14 @@ class PrivilegeController extends Controller {
 	        $permission_id = $request['action_id'];
 	        $result = $request['result'];
 	        
-	        if ($result === "true") {
+	        if ($result === 'true') {
 		        DB::table('role_perm')
 		          ->insert(['role_id' => $role,
 		                    'permission_id' => $permission_id,
 		                    'resource_id' => $resource_id]);
 	        }
 	        
-	        if ($result === "false") {  
+	        if ($result === 'false') {  
 		        DB::table('role_perm')
 		          ->where('role_id', $role) 
 		          ->where('resource_id', $resource_id)

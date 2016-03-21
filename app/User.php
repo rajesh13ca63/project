@@ -14,8 +14,7 @@ class User extends Authenticatable {
         'lastname', 'sex', 'marital', 'dob',
         'street', 'city', 'state', 'zip', 'phone',
         'offstreet', 'offcity', 'offstate', 'offzip', 'offphone', 'offemail',
-        'note', 'image',
- 
+        'note', 'image', 'link','facebook_id', 'avatar'
     ];
 
     /**

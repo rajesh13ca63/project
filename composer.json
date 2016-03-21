@@ -8,9 +8,10 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "thujohn/twitter": "^2.1",
-	"guzzlehttp/guzzle": "~5.0",
-        "aloha/twilio": "^2.0",
-        "olsgreen/twilio": "2.0.*"
+	    "guzzlehttp/guzzle": "~5.0",
+        "laravel/socialite": "^2.0",
+        "league/oauth1-client": "^1.6"
+       
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -52,11 +53,5 @@
     },
     "config": {
         "preferred-install": "dist"
-    },
-    "repositories": [
-    {
-        "type": "vcs",
-        "url":  "git@github.com:olsgreen/laravel5-twilio.git"
     }
-]
 }

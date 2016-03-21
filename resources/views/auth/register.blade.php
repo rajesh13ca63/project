@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="col-sm-4 form-group">
                                         <label>9.Date of Birth</label>
-                                        <input type="date" name="dob" id="dob" value="{{old('dob')}}" class="date">
+                                        <input  type="text" name="dob" id="dob" value="{{old('dob')}}" placeholder="dob">
                                     </div>
                                 </div>
                                 <!--Residence Address in Html form-->                  
@@ -95,7 +95,7 @@
                                         <input type="text" name="street" id="street" value="{{old('street')}}" placeholder="Enter Street Address" 
                                         class="form-control">
                                         <label>City</label> 
-                                        <input type="text" name="city" id="city"value="{{old('city')}}" placeholder="Enter City Name" class="form-control">
+                                        <input type="text" name="city" id="city" value="{{ old('city') }}" placeholder="Enter City Name" class="form-control">
                                         <label>State</label> 
                                         <input type="text" name="state" id="state" 
                                         value="{{old('state')}}" placeholder="Enter State Name" 
@@ -121,8 +121,7 @@
                                         class="form-control">
                                         <label>City</label>
                                         <input type="text" name="offcity" id="offcity" 
-                                        value="{{old('offcity')}}" placeholder="Enter City Name" 
-                                        class="form-control">
+                                        value="{{old('offcity')}}" placeholder="Enter City Name" class="form-control">
                                         <label>State</label>
                                         <input type="text" name="offstate" id="offstate" 
                                         value="{{old('offstate')}}" placeholder="Enter State Name" 

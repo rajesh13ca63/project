@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
         $("#list_records").jqGrid({
             url: "./griduers",
             editurl:"UpdateInfo",
@@ -40,6 +46,7 @@ $(document).ready(function () {
             stringResult:true,
             caption: "Personal Information",
             gridComplete: function(){
+                
                 var ids = jQuery("#list_records").jqGrid('getDataIDs');
                 for(var i = 0;i<ids.length;i++){
                 var cl = ids[i];

@@ -13,6 +13,7 @@ class AdminMiddleware {
      * @return mixed
      */
     public function handle($request, Closure $next) {
+        
         if (!Auth::guest() && Auth::user()->role == 2) {
            
             return $next($request);

@@ -40,6 +40,12 @@ return [
     'token' => '27c0aa7704990c3d32bae66fd3186fd9',
     'from' => '+12562723241',
     'ssl_verify' => true, // Development switch to bypass API SSL certificate verfication
-]
+    ],
 
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('CALLBACK_URL'),
+     ]
 ];

@@ -1,9 +1,13 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use Session;
+use Mail;
 use App\User;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
@@ -28,15 +32,15 @@ class AuthController extends Controller {
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
+     protected $redirectTo = '/home';
+    
+      
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
@@ -48,22 +52,22 @@ class AuthController extends Controller {
      */
     protected function validator(array $data) {
         return Validator::make($data, [
-        'name' => 'required|max:25',
-        'email' => 'required | email |max:255 | unique:users',
-        'password' => 'required|confirmed|min:6',
-            
-	    'firstname' => 'required | alpha',
-	    'lastname' => 'required | alpha',
-	    'sex' => 'required',
-	    'marital' => 'required',
-	    'dob' => 'required',
+            'name' => 'required|max:25',
+            'email' => 'required | email |max:255 | unique:users',
+            'password' => 'required|confirmed|min:6',
+                             
+    	    'firstname' => 'required | alpha',
+    	    'lastname' => 'required | alpha',
+    	    'sex' => 'required',
+    	    'marital' => 'required',
+    	    'dob' => 'required',
 
-	    'street' => 'required |regex:/(^[A-Za-z]+$)+/',
-	    'state' => 'required | alpha',
-	    'zip'  => 'required | numeric',
-	    'phone' => 'required | numeric',
-        'image'=>'required',
-        ]);
+    	    'street' => 'required',// |regex:/(^[A-Za-z]+$)+/',
+    	    'state' => 'required | alpha',
+    	    'zip'  => 'required | numeric',
+    	    'phone' => 'required | numeric',
+            'image'=>'required',
+        ]);                 
     }
     /**
      * Create a new user instance after a valid registration.
@@ -72,12 +76,33 @@ class AuthController extends Controller {
      * @return User
      */
     protected function create(array $data) {  
-	$image = $data['image'];
+
+        $this->redirectTo = ('/logout');
+
+	    $image = $data['image'];
         $destinationPath = 'image';
+        
         if (!$image->move($destinationPath, $image->getClientOriginalName())) {
+            
             return $this->errors(['message' => 'Error saving the file.', 'code' => 400]);
         }
+
         $iamge = $image->getClientOriginalName();
+
+        //Generating a string withe 15 length
+        $link = str_random(15);
+
+        //Sending mail after successfull registrations to the user emailid
+        $name = $data['name'];
+        $email = 'rajeshkumargupta001@gmail.com';
+
+        Mail::send('regemail', ['user' => $name, 'link' => $link], function ($message) use ($email) {
+            $message->from('rajeshkumargupta001@gmail.com', 'Your Application');
+            $message->to($email, $email)->subject('Your Registration');
+        });
+
+        Session::flash('status', 'Successfully Registration Completed');
+        
 
 	    return User::create([
             'name' => $data['name'],
@@ -107,6 +132,8 @@ class AuthController extends Controller {
            
             'image' => $iamge,
             'comment' => $data['comment'],
+            'link' => $link
+           
         ]);
     }
  }

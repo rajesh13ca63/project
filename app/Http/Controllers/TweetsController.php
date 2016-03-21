@@ -8,7 +8,8 @@ use DB;
 use App\Http\Controllers\Controller;
 
 class TweetsController extends Controller {
-    function viewTweets(Request $request) {
+    function viewTweets(Request $request) 
+    {
         $userid = $request['userid'];
 	    $rows = DB::table('users')->where('id',$userid)->first();
 	    $tweetid = $rows->tweet;

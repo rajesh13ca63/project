@@ -27,6 +27,10 @@ $(document).ready(function() {
 	                }
 	        });
 	   });
+
+	$('#dob').datepicker({
+            format: "yyyy-dd-mm"
+    });  
 });
 
 //after changing the checkbox value it will works
@@ -45,5 +49,7 @@ function changeprivilege(result, role, resource_id, action_id) {
         success: function(response) {
         }
     });   
+
+   
 }
 

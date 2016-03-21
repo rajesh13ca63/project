@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -11,8 +16,8 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
+                                <input type="email" class="form-control" name="email" 
+                                value="{{ old('email') }}">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -48,6 +53,16 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <p class="text-center small msB mlT psT boundT">Or Connect with</p>
+                            <div class="col-md-6 col-md-offset-1">
+                                <a href="auth/facebook" role="button"
+                                class="btn btn-primary">
+                                <i class="fa fa-facebook"></i>&nbsp Log in with Facebook
+                                </a>
                             </div>
                         </div>
                     </form>

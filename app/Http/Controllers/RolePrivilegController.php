@@ -10,7 +10,8 @@ class RolePrivilegController extends Controller {
 	function usersinfo() {
 		$rows = DB::table('users')->get();
 		$roles = DB::table('roles')->get();
-		/*
+		
+        /*
 		Select the user id from users table then its corresponding name from users table
 		*/
 	    $userassign = DB::table('users')
@@ -70,7 +71,8 @@ class RolePrivilegController extends Controller {
         if ($operation == "DeleteResource") {
             DB::table('resources')
               ->where('resource_name',$resource )
-              ->delete(); 
+              ->delete();
+              
             return redirect('roleresourceperm')->with('operation', 'Sucessfully Added new Records');  
         }
 
@@ -81,7 +83,7 @@ class RolePrivilegController extends Controller {
             return redirect('roleresourceperm')->with('operation', 'Sucessfully Added new Records');  
         }
         
-	    if ($newrole == "" && $newperm =="" && $newres =="") {
+	    if ($newrole == "" && $newperm == "" && $newres == "") {
            
             return redirect('roleresourceperm')->with('status','Please Enter Text Value');
 	    }
@@ -113,12 +115,12 @@ class RolePrivilegController extends Controller {
 		$userid = $request['users'];
 		$operation = $request['submit'];
 		
-		if ($roleid == 0 || $userid== 0) {
+		if ($roleid == 0 || $userid == 0) {
 			
 			return redirect('allusers')->with('operation', 'Please Select Username/UserType');
 		}
 
-        if($operation == 'Add') {
+        if ($operation == 'Add') {
 			DB::table('users')
 		      ->where('id', $userid)
 			  ->update(['role' => $roleid]);
